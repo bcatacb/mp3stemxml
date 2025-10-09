@@ -91,7 +91,7 @@ async def process_audio_to_stems_midi(job_id: str, audio_path: Path, filename: s
         # Run Demucs separation
         demucs_output = work_dir / "demucs_output"
         demucs_cmd = [
-            "python", "-m", "demucs",
+            "/root/.venv/bin/python", "-m", "demucs",
             "-n", "htdemucs_6s",  # 6-stem model: drums, bass, other, vocals, guitar, piano
             "-o", str(demucs_output),
             str(audio_path)
