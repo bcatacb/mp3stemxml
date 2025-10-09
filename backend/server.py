@@ -154,7 +154,7 @@ async def process_audio_to_stems_midi(job_id: str, audio_path: Path, filename: s
             midi_output_dir.mkdir(exist_ok=True)
             
             basic_pitch_cmd = [
-                "basic-pitch",
+                "/root/.venv/bin/basic-pitch",
                 str(midi_output_dir),
                 str(stem_file)
             ]
