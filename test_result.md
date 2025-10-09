@@ -235,3 +235,7 @@ test_plan:
 agent_communication:
   - agent: "main"
     message: "Initial implementation complete. All backend endpoints are ready for testing. The app uses Demucs for stem separation (6 stems), Basic Pitch for MIDI conversion, and music21 for MusicXML generation. Please test the complete workflow: upload audio file -> check status updates -> verify ZIP download contains stems, MIDI, and MusicXML files. Note: Processing may take several minutes depending on audio file length."
+  - agent: "testing"
+    message: "Found critical issue: subprocess calls using system Python instead of venv Python. Demucs module not found."
+  - agent: "main"
+    message: "FIXED: Updated subprocess calls in server.py lines 94 and 157 to use /root/.venv/bin/python and /root/.venv/bin/basic-pitch respectively. Backend restarted. Ready for retesting."
