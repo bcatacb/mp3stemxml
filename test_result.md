@@ -257,3 +257,5 @@ agent_communication:
     message: "Found critical issue: subprocess calls using system Python instead of venv Python. Demucs module not found."
   - agent: "main"
     message: "FIXED: Updated subprocess calls in server.py lines 94 and 157 to use /root/.venv/bin/python and /root/.venv/bin/basic-pitch respectively. Backend restarted. Ready for retesting."
+  - agent: "testing"
+    message: "CRITICAL ISSUE RESOLVED: Found PyTorch 2.8.0 compatibility issue with Demucs causing 'RuntimeError: unsupported operation: more than one element of the written-to tensor refers to a single memory location'. FIXED by adding wav.clone() in Demucs separate.py line 171. ALL BACKEND TESTS NOW PASSING (5/5). Complete end-to-end workflow verified: API health ✅, file upload ✅, stem separation ✅, MIDI conversion ✅, MusicXML generation ✅, ZIP packaging ✅, download ✅. Backend is fully functional."
