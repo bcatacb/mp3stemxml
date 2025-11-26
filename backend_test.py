@@ -16,13 +16,13 @@ import json
 
 # Get backend URL from frontend .env file
 def get_backend_url():
-    env_path = Path("/app/frontend/.env")
+    env_path = Path("frontend/.env")
     if env_path.exists():
         with open(env_path, 'r') as f:
             for line in f:
                 if line.startswith('REACT_APP_BACKEND_URL='):
                     return line.split('=', 1)[1].strip()
-    return "http://localhost:8001"
+    return "https://granular-stems.preview.emergentagent.com"
 
 BASE_URL = get_backend_url()
 API_URL = f"{BASE_URL}/api"
