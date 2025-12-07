@@ -57,6 +57,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "build:production": "REACT_APP_BACKEND_URL=/api craco build",
     "test": "craco test"
   },
   "browserslist": {
