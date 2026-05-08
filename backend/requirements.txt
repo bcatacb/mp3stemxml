@@ -1,6 +1,6 @@
 absl-py==2.3.1
 annotated-types==0.7.0
-antlr4-python3-runtime==4.9.3
+antlr4-python3-runtime==4.9.*
 anyio==4.11.0
 astunparse==1.6.3
 audioread==3.0.1
@@ -88,7 +88,7 @@ platformdirs==4.4.0
 pluggy==1.6.0
 pooch==1.8.2
 pretty_midi==0.2.11
-protobuf==4.25.8
+protobuf==4.23.4
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycodestyle==2.14.0
@@ -126,10 +126,10 @@ soxr==1.0.0
 starlette==0.37.2
 submitit==1.5.3
 sympy==1.14.0
-tensorboard==2.15.2
+tensorboard==2.15.0
 tensorboard-data-server==0.7.2
 tensorflow==2.15.0
-tensorflow-cpu-aws==2.15.0
+tensorflow-cpu==2.15.0
 tensorflow-estimator==2.15.0
 tensorflow-io-gcs-filesystem==0.37.1
 termcolor==3.1.0
