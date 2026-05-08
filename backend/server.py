@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
-import sys
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
@@ -32,8 +31,8 @@ app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 # Create directories for file storage
-UPLOADS_DIR = Path(os.environ.get('UPLOADS_DIR', ROOT_DIR / '../uploads'))
-PROCESSED_DIR = Path(os.environ.get('PROCESSED_DIR', ROOT_DIR / '../processed'))
+UPLOADS_DIR = Path("/app/uploads")
+PROCESSED_DIR = Path("/app/processed")
 UPLOADS_DIR.mkdir(exist_ok=True)
 PROCESSED_DIR.mkdir(exist_ok=True)
 
@@ -91,9 +90,8 @@ async def process_audio_to_stems_midi(job_id: str, audio_path: Path, filename: s
         
         # Run Demucs separation
         demucs_output = work_dir / "demucs_output"
-        python_path = Path(os.environ.get('PYTHON_PATH', sys.executable))
         demucs_cmd = [
-            str(python_path), "-m", "demucs",
+            "/root/.venv/bin/python", "-m", "demucs",
             "-n", "htdemucs_6s",  # 6-stem model: drums, bass, other, vocals, guitar, piano
             "-o", str(demucs_output),
             str(audio_path)
@@ -155,9 +153,8 @@ async def process_audio_to_stems_midi(job_id: str, audio_path: Path, filename: s
             midi_output_dir = midi_dir / stem_name
             midi_output_dir.mkdir(exist_ok=True)
             
-            basic_pitch_path = python_path.parent / "basic-pitch"
             basic_pitch_cmd = [
-                str(basic_pitch_path),
+                "/root/.venv/bin/basic-pitch",
                 str(midi_output_dir),
                 str(stem_file)
             ]
